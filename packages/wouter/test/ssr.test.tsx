@@ -12,6 +12,7 @@ import {
   Redirect,
   useSearch,
   useLocation,
+  SsrContext,
 } from "wouter";
 
 describe("server-side rendering", () => {
@@ -71,6 +72,20 @@ describe("server-side rendering", () => {
 
     const rendered = renderToStaticMarkup(<App />);
     expect(rendered).toBe("");
+  });
+
+  it("update ssr context", () => {
+    const context: SsrContext = {};
+    const App = () => (
+      <Router ssrPath="/" ssrContext={context}>
+        <Route path="/">
+          <Redirect to="/foo" />
+        </Route>
+      </Router>
+    );
+
+    renderToStaticMarkup(<App />);
+    expect(context.redirectTo).toBe("/foo");
   });
 
   describe("rendering with given search string", () => {

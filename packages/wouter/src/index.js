@@ -36,6 +36,8 @@ const defaultRouter = {
   // this option is used to override the current location during SSR
   ssrPath: undefined,
   ssrSearch: undefined,
+  // optional context to track render state during SSR
+  ssrContext: undefined,
   // customizes how `href` props are transformed for <Link />
   hrefs: (x) => x,
 };
@@ -339,11 +341,16 @@ export const Redirect = (props) => {
   const { to, href = to } = props;
   const [, navigate] = useLocation();
   const redirect = useEvent(() => navigate(to || href, props));
+  const { ssrContext } = useRouter();
 
   // redirect is guaranteed to be stable since it is returned from useEvent
   useIsomorphicLayoutEffect(() => {
     redirect();
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  if (ssrContext) {
+    ssrContext.redirectTo = to;
+  }
 
   return null;
 };

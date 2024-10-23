@@ -861,13 +861,20 @@ import { Router } from "wouter";
 
 const handleRequest = (req, res) => {
   // top-level Router is mandatory in SSR mode
+  // pass an optional context object to handle redirects on the server
+  const ssrContext = {};
   const prerendered = renderToString(
-    <Router ssrPath={req.path} ssrSearch={req.search}>
+    <Router ssrPath={req.path} ssrSearch={req.search} ssrContext={ssrContext}>
       <App />
     </Router>
   );
 
-  // respond with prerendered html
+  if (ssrContext.redirectTo) {
+    // encountered redirect
+    res.redirect(ssrContext.redirectTo);
+  } else {
+    // respond with prerendered html
+  }
 };
 ```
 
