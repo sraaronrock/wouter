@@ -339,9 +339,10 @@ export const Switch = ({ children, location }) => {
 
 export const Redirect = (props) => {
   const { to, href = to } = props;
-  const [, navigate] = useLocation();
+  const router = useRouter();
+  const [, navigate] = useLocationFromRouter(router);
   const redirect = useEvent(() => navigate(to || href, props));
-  const { ssrContext } = useRouter();
+  const { ssrContext } = router;
 
   // redirect is guaranteed to be stable since it is returned from useEvent
   useIsomorphicLayoutEffect(() => {
