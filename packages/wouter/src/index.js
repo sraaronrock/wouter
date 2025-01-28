@@ -216,10 +216,10 @@ export function useSearchParams() {
 
   const setSearchParams = useEvent((nextInit, options) => {
     tempSearchParams = new URLSearchParams(
-      typeof nextInit === 'function' ? nextInit(tempSearchParams) : nextInit,
+      typeof nextInit === "function" ? nextInit(tempSearchParams) : nextInit
     );
-    navigate(location + '?' + tempSearchParams, options);
-  })
+    navigate(location + "?" + tempSearchParams, options);
+  });
 
   return [searchParams, setSearchParams];
 }
