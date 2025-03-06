@@ -14,7 +14,7 @@
     "build": "npm run build -ws",
     "watch": "concurrently -n wouter,wouter-preact \"npm run -w packages/wouter watch\" \"npm run -w packages/wouter-preact watch\"",
     "lint": "eslint packages/**/*.js",
-    "lint-types": "vitest typecheck"
+    "lint-types": "vitest --typecheck"
   },
   "author": "Alexey Taktarov <molefrog@gmail.com>",
   "repository": {
