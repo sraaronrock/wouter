@@ -361,7 +361,7 @@ Refer to [Server-Side Rendering](#server-side-rendering-support-ssr) for more in
 
 ### `useSearchParams`: search parameters
 
-Allow you to get and set any search parameters. The first returned value is a `URLSearchParams` object and the second returned value is a setter that accepts a `URLSearchParams` object with options.
+Returns a `URLSearchParams` object and a setter function to update search parameters. The setter accepts either a value (object, URLSearchParams, string[][], etc.) or a **callback function** that receives the current params and must return the new params.
 
 ```jsx
 import { useSearchParams } from 'wouter';
@@ -374,6 +374,7 @@ const id = searchParams.get('id');
 // modify a specific search parameter
 setSearchParams((prev) => {
   prev.set('tab', 'settings');
+  return prev;
 });
 
 // override all search parameters
@@ -387,6 +388,7 @@ setSearchParams({
 setSearchParams(
   (prev) => {
     prev.set('order', 'desc');
+    return prev;
   },
   {
     replace: true,
@@ -397,6 +399,7 @@ setSearchParams(
 setSearchParams(
   (prev) => {
     prev.set('foo', 'bar');
+    return prev;
   },
   {
     state: 'hello',
