@@ -52,6 +52,19 @@ it("can be customized with memoryLocation using search path parameter", () => {
   expect(result.current).toEqual("key=value&foo=bar");
 });
 
+it("auto-inherits searchHook from hook when not explicitly provided", () => {
+  const { hook } = memoryLocation({ path: "/foo?key=value" });
+
+  const { result } = renderHook(() => useSearch(), {
+    wrapper: (props) => {
+      // Only pass hook, not searchHook - it should auto-inherit!
+      return <Router hook={hook}>{props.children}</Router>;
+    },
+  });
+
+  expect(result.current).toEqual("key=value");
+});
+
 it("unescapes search string", () => {
   const { result: searchResult } = renderHook(() => useSearch());
 

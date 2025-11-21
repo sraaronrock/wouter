@@ -930,6 +930,20 @@ it("renders a user page", () => {
 });
 ```
 
+**Note:** When you pass a `hook` prop to `Router`, it will automatically inherit the `searchHook` from the hook if available (via `hook.searchHook`). This means you don't need to explicitly pass both `hook` and `searchHook` when using `memoryLocation` - just passing `hook` is enough for `useSearch()` to work correctly with query parameters.
+
+```jsx
+it("works with query parameters", () => {
+  const { hook } = memoryLocation({ path: "/products?sort=price&order=asc" });
+
+  const { result } = renderHook(() => useSearch(), {
+    wrapper: ({ children }) => <Router hook={hook}>{children}</Router>,
+  });
+
+  expect(result.current).toBe("sort=price&order=asc");
+});
+```
+
 The hook can be configured to record navigation history. Additionally, it comes with a `navigate` function for external navigation.
 
 ```jsx
