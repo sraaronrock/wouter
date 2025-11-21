@@ -996,6 +996,17 @@ const UsersRoute = () => {
 
 Wouter's motto is **"Minimalist-friendly"**.
 
+## Contributing
+
+**Architecture principles:**
+
+- All code is written in JavaScript for full control over size optimization
+- TypeScript definitions are maintained separately in `types/` directories
+- `wouter-preact` reuses the same source except for `react-deps.js` (Preact-specific hooks)
+- Type definitions are duplicated between packages (not ideal, but works for now)
+
+**Development:** Launch the build watcher in a separate terminal with `npm run watch`, then run tests with `npm run test` for interactive mode or `npm run test -- --run` for a single run.
+
 ## Acknowledgements
 
 Wouter illustrations and logos were made by [Katya Simacheva](https://simachevakatya.com/) and
