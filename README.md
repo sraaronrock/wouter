@@ -145,7 +145,7 @@ links, default routes, server-side rendering etc.
 
 **Location Hooks**
 
-These can be used separately from the main module and have an interface similar to `useState`. These hooks don't support nesting, base path, route matching.
+These can be used separately from the main module and have an interface similar to `useState`. These hooks are standalone and don't include built-in support for nesting, base path, or route matching. However, when passed to `<Router>`, they work seamlessly with all Router features including nesting and base paths.
 
 - **[`import { useBrowserLocation } from "wouter/use-browser-location"`](https://github.com/molefrog/wouter/blob/v3/packages/wouter/src/use-browser-location.js)** —
   allows to manipulate current location in the browser's address bar, a tiny wrapper around the History API.
