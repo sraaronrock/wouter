@@ -43,6 +43,15 @@ it("accepts class components in the `component` prop", () => {
   <Route path="/app" component={A} />;
 });
 
+it("accepts ForwardRefExoticComponent in the `component` prop", () => {
+  // Simulates components wrapped with HOCs like withErrorBoundary
+  const MyComponent = React.forwardRef<HTMLDivElement, { params: {} }>(
+    ({ params }) => <div />
+  );
+
+  <Route path="/app" component={MyComponent} />;
+});
+
 it("accepts children", () => {
   <Route path="/app">
     <div />
