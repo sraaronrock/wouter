@@ -751,7 +751,7 @@ const App = () => (
 );
 ```
 
-**[▶ Demo Sandbox](https://codesandbox.io/s/wouter-v3-strict-routes-w3xdtz)**
+**[▶ Demo Sandbox](https://codesandbox.io/p/sandbox/wouter-v3-strict-routes-w3xdtz)**
 
 ### Are relative routes and links supported?
 
@@ -772,7 +772,7 @@ const App = () => (
 );
 ```
 
-**[▶ Demo Sandbox](https://codesandbox.io/s/wouter-v3-nested-routes-l8p23s)**
+**[▶ Demo Sandbox](https://codesandbox.io/p/sandbox/wouter-v3-nested-routes-l8p23s)**
 
 ### Can I initiate navigation from outside a component?
 
