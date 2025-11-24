@@ -24,25 +24,19 @@ const currentHashLocation = () => "/" + location.hash.replace(/^#?\/?/, "");
 
 export const navigate = (to, { state = null, replace = false } = {}) => {
   const oldURL = location.href;
-  let newURL, newHistoryStatePath;
 
-  if (location.protocol === "data:") {
-    const newHash = "#/" + to.replace(/^#?\/?/, "");
-    newHistoryStatePath = newHash;
-    newURL = oldURL.split("#")[0] + newHash;
-  } else {
-    const [hash, search] = to.replace(/^#?\/?/, "").split("?");
-    newHistoryStatePath =
-      location.pathname +
-      (search ? `?${search}` : location.search) +
-      `#/${hash}`;
-    newURL = new URL(newHistoryStatePath, location.origin).href;
-  }
+  const [hash, search] = to.replace(/^#?\/?/, "").split("?");
+
+  // Works for ALL protocols including data:
+  const url = new URL(location.href);
+  url.hash = `/${hash}`;
+  if (search) url.search = search;
+  const newURL = url.href;
 
   if (replace) {
-    history.replaceState(state, "", newHistoryStatePath);
+    history.replaceState(state, "", newURL);
   } else {
-    history.pushState(state, "", newHistoryStatePath);
+    history.pushState(state, "", newURL);
   }
 
   const event =
