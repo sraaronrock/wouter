@@ -1,2 +1,5 @@
 [test]
 preload = ["./packages/wouter/test/setup.ts"]
+coverage = true
+coverageReporter = ["lcov"]
+coverageDir = "./coverage"
