@@ -12,7 +12,8 @@
     "test": "bun test",
     "test-types": "tsc --noEmit",
     "size": "size-limit",
-    "lint": "eslint packages/**/*.js"
+    "lint": "eslint packages/**/*.js",
+    "build": ":"
   },
   "author": "Alexey Taktarov <molefrog@gmail.com>",
   "repository": {
