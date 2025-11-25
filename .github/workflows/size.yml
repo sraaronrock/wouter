@@ -17,4 +17,4 @@ jobs:
       - uses: andresz1/size-limit-action@v1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          skip_step: build
+          build_script: echo "No build step required"
