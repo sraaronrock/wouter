@@ -1,7 +1,7 @@
 import { test, expectTypeOf } from "bun:test";
 import { matchRoute, useRouter } from "../src/index.js";
 
-const assertType = <T,>(_value: T): void => {};
+const assertType = <T>(_value: T): void => {};
 const { parser } = useRouter();
 
 test("should only accept strings", () => {

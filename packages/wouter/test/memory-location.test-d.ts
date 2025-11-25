@@ -2,7 +2,7 @@ import { test, expectTypeOf } from "bun:test";
 import { memoryLocation } from "../src/memory-location.js";
 import { BaseLocationHook } from "../src/index.js";
 
-const assertType = <T,>(_value: T): void => {};
+const assertType = <T>(_value: T): void => {};
 
 test("should return hook that supports location spec", () => {
   const { hook } = memoryLocation();

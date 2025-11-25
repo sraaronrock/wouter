@@ -1,7 +1,7 @@
 import { test, expectTypeOf } from "bun:test";
 import { useRoute } from "../src/index.js";
 
-const assertType = <T,>(_value: T): void => {};
+const assertType = <T>(_value: T): void => {};
 
 test("should only accept strings", () => {
   // @ts-expect-error

@@ -2,7 +2,7 @@ import { test, describe, expectTypeOf } from "bun:test";
 import { useHashLocation, navigate } from "../src/use-hash-location.js";
 import { BaseLocationHook } from "../src/index.js";
 
-const assertType = <T,>(_value: T): void => {};
+const assertType = <T>(_value: T): void => {};
 
 test("is a location hook", () => {
   expectTypeOf(useHashLocation).toMatchTypeOf<BaseLocationHook>();

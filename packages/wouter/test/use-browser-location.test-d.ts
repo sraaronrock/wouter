@@ -5,7 +5,7 @@ import {
   useHistoryState,
 } from "../src/use-browser-location.js";
 
-const assertType = <T,>(_value: T): void => {};
+const assertType = <T>(_value: T): void => {};
 
 describe("useBrowserLocation", () => {
   test("should return string, function tuple", () => {
