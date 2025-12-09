@@ -1,0 +1,22 @@
+{
+  "name": "magazin",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "bun --watch index.tsx",
+    "start": "bun index.tsx"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "@dr.pogodin/react-helmet": "^3.0.4",
+    "bun-plugin-tailwind": "^0.1.2",
+    "tailwindcss": "^4.1.17",
+    "wouter": "workspace:*"
+  }
+}
