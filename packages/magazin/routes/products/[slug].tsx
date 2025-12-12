@@ -28,12 +28,16 @@ export function ProductPage({ slug }: { slug: string }) {
       </Helmet>
       <Link
         href="/"
+        transition
         className=" inline-flex items-center gap-2  hover:bg-neutral-100/75 rounded-md p-1.5 hover:text-neutral-900 mb-2"
       >
         <i className="iconoir-reply text-base" />
       </Link>
       <div className="grid grid-cols-3 gap-12">
-        <div className="bg-stone-100/75 rounded-lg aspect-square col-span-2 p-12">
+        <div
+          className="bg-stone-100/75 rounded-lg aspect-square col-span-2 p-12"
+          style={{ viewTransitionName: `product-image-${product.slug}` }}
+        >
           <img
             src={product.image}
             alt={product.name}
