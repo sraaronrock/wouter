@@ -20,7 +20,7 @@ export function StarWouter() {
   return (
     <a
       href="https://github.com/molefrog/wouter"
-      className="inline-flex items-center gap-2 px-3 h-9 border border-neutral-200 rounded-xl hover:bg-neutral-50 transition-colors select-none"
+      className="inline-flex items-center gap-2 px-3 h-9 border border-neutral-200 rounded-xl hover:bg-neutral-50 transition-colors select-none whitespace-nowrap flex-shrink-0"
     >
       <i className="iconoir-star-solid text-base text-yellow-500" />
       <span className="text-sm font-medium">Star Wouter</span>

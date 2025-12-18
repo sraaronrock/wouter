@@ -11,10 +11,10 @@ function ProductCard({ slug, brand, category, name, price, image }: Product) {
       className="overflow-hidden group flex flex-col h-full"
     >
       <div
-        className="aspect-square p-12 bg-stone-100/75 group-hover:bg-stone-200/75 transition-colors rounded-t-lg"
+        className="w-full aspect-square p-12 bg-stone-100/75 group-hover:bg-stone-200/75 transition-colors rounded-t-lg"
         style={{ viewTransitionName: `product-image-${slug}` }}
       >
-        <img src={image} alt={name} className="object-cover w-full h-full" />
+        <img src={image} alt={name} className="object-contain w-full h-full" />
       </div>
       <div className="p-4 bg-stone-100/75 rounded-b-lg group-hover:bg-stone-200/75 transition-colors flex-1 flex flex-col justify-between">
         <div className="text-sm text-neutral-400/75">
@@ -78,11 +78,11 @@ function SortSelect({
   onChange: (value: string) => void;
 }) {
   return (
-    <div className="relative inline-flex items-center cursor-pointer">
+    <div className="relative flex md:inline-flex items-center cursor-pointer w-full md:w-auto">
       <select
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="appearance-none bg-transparent text-sm text-neutral-500 pr-4 cursor-pointer hover:text-neutral-900 focus:outline-none text-right"
+        className="appearance-none bg-transparent text-sm text-neutral-500 pr-4 cursor-pointer hover:text-neutral-900 focus:outline-none text-left md:text-right w-full md:w-auto"
       >
         {sortOptions.map((opt) => (
           <option key={opt.value} value={opt.value}>
@@ -150,14 +150,14 @@ export function HomePage() {
           go star the repo to increase our chances of becoming a billion dollar
           company.
         </p>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 overflow-x-auto flex-nowrap -mx-6 px-6 md:mx-0 md:px-0">
           <button
             onClick={() =>
               document
                 .getElementById("products")
                 ?.scrollIntoView({ behavior: "smooth" })
             }
-            className="bg-black text-white px-3 text-sm font-medium py-2 rounded-xl hover:bg-neutral-800 transition-colors shadow-sm cursor-pointer"
+            className="bg-black text-white px-3 text-sm font-medium py-2 rounded-xl hover:bg-neutral-800 transition-colors shadow-sm cursor-pointer whitespace-nowrap flex-shrink-0"
           >
             Start shopping →
           </button>
@@ -166,7 +166,7 @@ export function HomePage() {
       </div>
 
       <div
-        className="flex items-center justify-between py-6 scroll-mt-16"
+        className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 py-6 scroll-mt-16"
         id="products"
       >
         <CategoryFilter

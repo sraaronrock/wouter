@@ -33,15 +33,15 @@ export function ProductPage({ slug }: { slug: string }) {
       >
         <i className="iconoir-reply text-base" />
       </Link>
-      <div className="grid grid-cols-3 gap-12">
+      <div className="grid grid-cols-2 md:grid-cols-3 md:gap-12 gap-6">
         <div
-          className="bg-stone-100/75 rounded-lg aspect-square col-span-2 p-12"
+          className="bg-stone-100/75 rounded-lg aspect-square md:col-span-2 p-12"
           style={{ viewTransitionName: `product-image-${product.slug}` }}
         >
           <img
             src={product.image}
             alt={product.name}
-            className="object-cover w-full h-full"
+            className="object-contain w-full h-full"
           />
         </div>
         <div className="pt-4">
