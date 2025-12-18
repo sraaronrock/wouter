@@ -1,6 +1,6 @@
 import { hydrateRoot } from "react-dom/client";
 import { flushSync } from "react-dom";
-import { Router, type NavigateOptions, type AroundNavHandler } from "wouter";
+import { Router, type AroundNavHandler } from "wouter";
 import { HelmetProvider } from "@dr.pogodin/react-helmet";
 import { App } from "./App";
 

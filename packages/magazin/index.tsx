@@ -8,12 +8,20 @@ import { App } from "./App.tsx";
 import tailwind from "bun-plugin-tailwind";
 
 // Build the HTML and all its assets before starting the server
+const isProduction = process.env.NODE_ENV === "production";
+
 const build = await Bun.build({
   entrypoints: ["./index.html"],
   // No outdir = files are kept in memory, not written to disk
-  minify: false,
+  minify: isProduction,
   publicPath: "/",
+  sourcemap: "linked",
   plugins: [tailwind],
+  define: {
+    "process.env.NODE_ENV": JSON.stringify(
+      process.env.NODE_ENV || "development"
+    ),
+  },
 });
 
 if (!build.success) {
@@ -51,13 +59,27 @@ Bun.serve({
     // Check if this is a request for a built asset
     const asset = assets.get(url.pathname);
     if (asset) {
-      return new Response(asset);
+      const headers = isProduction
+        ? {
+            // Built assets have content hashes, so they can be cached indefinitely
+            "Cache-Control": "public, max-age=31536000, immutable",
+          }
+        : {};
+
+      return new Response(asset, { headers });
     }
 
     // Check if this is a request for a static file from public/
     const publicFile = Bun.file(`./public${url.pathname}`);
     if (await publicFile.exists()) {
-      return new Response(publicFile);
+      const headers = new Headers();
+
+      // Add 24h caching for static assets in production
+      if (isProduction) {
+        headers.set("Cache-Control", "public, max-age=86400");
+      }
+
+      return new Response(publicFile, { headers });
     }
 
     // Otherwise, it's a page request - render with SSR

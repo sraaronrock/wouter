@@ -5,7 +5,8 @@
   "private": true,
   "scripts": {
     "dev": "bun --watch index.tsx",
-    "start": "bun index.tsx"
+    "start": "bun index.tsx",
+    "prod": "NODE_ENV=production bun index.tsx"
   },
   "devDependencies": {
     "@types/bun": "latest"
