@@ -1,13 +1,14 @@
 import { useSearchParams, Link } from "wouter";
 import { Helmet } from "@dr.pogodin/react-helmet";
 import { products, type Product } from "@/db/products";
+import { StarWouter } from "@/components/star-wouter";
 
 function ProductCard({ slug, brand, category, name, price, image }: Product) {
   return (
     <Link
       href={`/products/${slug}`}
       transition
-      className="overflow-hidden group"
+      className="overflow-hidden group flex flex-col h-full"
     >
       <div
         className="aspect-square p-12 bg-stone-100/75 group-hover:bg-stone-200/75 transition-colors rounded-t-lg"
@@ -15,7 +16,7 @@ function ProductCard({ slug, brand, category, name, price, image }: Product) {
       >
         <img src={image} alt={name} className="object-cover w-full h-full" />
       </div>
-      <div className="p-4 bg-stone-100/75 rounded-b-lg group-hover:bg-stone-200/75 transition-colors">
+      <div className="p-4 bg-stone-100/75 rounded-b-lg group-hover:bg-stone-200/75 transition-colors flex-1 flex flex-col justify-between">
         <div className="text-sm text-neutral-400/75">
           {brand} · {category}
         </div>
@@ -149,16 +150,19 @@ export function HomePage() {
           go star the repo to increase our chances of becoming a billion dollar
           company.
         </p>
-        <button
-          onClick={() =>
-            document
-              .getElementById("products")
-              ?.scrollIntoView({ behavior: "smooth" })
-          }
-          className="bg-black text-white px-3 text-sm font-medium py-2 rounded-xl hover:bg-neutral-800 transition-colors shadow-sm cursor-pointer"
-        >
-          Start shopping →
-        </button>
+        <div className="flex items-center gap-3">
+          <button
+            onClick={() =>
+              document
+                .getElementById("products")
+                ?.scrollIntoView({ behavior: "smooth" })
+            }
+            className="bg-black text-white px-3 text-sm font-medium py-2 rounded-xl hover:bg-neutral-800 transition-colors shadow-sm cursor-pointer"
+          >
+            Start shopping →
+          </button>
+          <StarWouter />
+        </div>
       </div>
 
       <div
@@ -175,7 +179,7 @@ export function HomePage() {
         />
       </div>
 
-      <div className="grid grid-cols-3 auto-rows-fr gap-2.5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 auto-rows-max gap-2.5">
         {sortedProducts.map((product) => (
           <ProductCard key={product.slug} {...product} />
         ))}

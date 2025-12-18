@@ -26,7 +26,7 @@ export function AboutPage() {
       </p>
 
       <div className="text-sm text-neutral-400 mb-2">Features</div>
-      <ul className="mt-4 list-inside list-nonespace-y-1 grid grid-cols-2 gap-3.5">
+      <ul className="mt-4 list-inside list-nonespace-y-1 grid grid-cols-1 sm:grid-cols-2 auto-rows-fr gap-3.5">
         <Feature>
           <Link href="/products/hook-keyring-rvst" className="hover:underline">
             Dynamic segments
@@ -39,7 +39,7 @@ export function AboutPage() {
         </Feature>
         <Feature>
           <Link
-            href="/?category=electronics&sort=price-desc"
+            href="/?category=accessories&sort=price-desc"
             className="hover:underline"
           >
             Search parameters
@@ -56,7 +56,11 @@ export function AboutPage() {
           </Link>
         </Feature>
         <Feature>
-          <Link href="/cart" state={{ addedItem: "Demo Product" }} className="hover:underline">
+          <Link
+            href="/cart"
+            state={{ addedItem: "Demo Product" }}
+            className="hover:underline"
+          >
             Navigation with state
           </Link>
         </Feature>
@@ -66,7 +70,9 @@ export function AboutPage() {
           </Link>
         </Feature>
         <Feature>
-          <span className="text-neutral-400">View transitions (soon)</span>
+          <Link href="/" className="hover:underline" transition>
+            View transitions
+          </Link>
         </Feature>
       </ul>
     </>

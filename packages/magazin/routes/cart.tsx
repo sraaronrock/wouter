@@ -21,7 +21,7 @@ function NotificationBanner({
 
   return (
     <div
-      className={`fixed bottom-6 left-1/2 -translate-x-1/2 bg-white border border-neutral-200 text-neutral-900 px-3.5 py-2 rounded-lg shadow-lg transition-transform duration-300 starting:translate-y-32 ${
+      className={`fixed bottom-10 left-1/2 -translate-x-1/2 bg-white border border-neutral-200 text-neutral-900 px-3.5 py-2 rounded-lg shadow-lg transition-transform duration-300 starting:translate-y-32 ${
         show ? "translate-y-0" : "translate-y-32"
       }`}
     >
